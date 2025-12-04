@@ -87,3 +87,9 @@ https://newsapi.org/v2/everything?q=technology&pageSize=6&page=1&apiKey=ВАШ_A
 ---
 
 ## 🔹 Скриншоты работы приложения
+
+<img width="898" height="774" alt="image" src="https://github.com/user-attachments/assets/0da6ef27-1af2-49b7-a16d-9180a5adfe78" />
+
+<img width="883" height="706" alt="image" src="https://github.com/user-attachments/assets/3b30158a-4f5b-432a-9999-5e878b75a495" />
+
+
