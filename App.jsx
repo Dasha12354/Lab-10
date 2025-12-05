@@ -32,10 +32,8 @@ export default function App() {
   }, [category]);
 
   
-  useEffect(() => {
-    loadNews(1, true);
-  }, [category]);
 
+  
   const loadNews = async (pageNumber = 1, reset = false) => {
     setLoading(true);
 
