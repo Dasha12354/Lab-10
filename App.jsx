@@ -18,14 +18,19 @@ const categoryMap = {
 
 export default function App() {
   const [news, setNews] = useState([]);
-  const [category, setCategory] = useState("Все");
+  
+ const [category, setCategory] = useState(() => {
+  const saved = localStorage.getItem("category");
+  return saved ? saved : "Все";
+});
   const [page, setPage] = useState(1);
   const [activeNews, setActiveNews] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    loadNews(1, true);
-  }, [category]);
+  
+useEffect(() => {
+  localStorage.setItem("category", category);
+}, [category]);
 
   const loadNews = async (pageNumber = 1, reset = false) => {
     setLoading(true);
