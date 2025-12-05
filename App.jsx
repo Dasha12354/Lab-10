@@ -18,19 +18,23 @@ const categoryMap = {
 
 export default function App() {
   const [news, setNews] = useState([]);
-  
- const [category, setCategory] = useState(() => {
-  const saved = localStorage.getItem("category");
-  return saved ? saved : "Все";
-});
+  const [category, setCategory] = useState(() => {
+    const saved = localStorage.getItem("category");
+    return saved ? saved : "Все";
+  });
   const [page, setPage] = useState(1);
   const [activeNews, setActiveNews] = useState(null);
   const [loading, setLoading] = useState(false);
 
+ 
+  useEffect(() => {
+    localStorage.setItem("category", category);
+  }, [category]);
+
   
-useEffect(() => {
-  localStorage.setItem("category", category);
-}, [category]);
+  useEffect(() => {
+    loadNews(1, true);
+  }, [category]);
 
   const loadNews = async (pageNumber = 1, reset = false) => {
     setLoading(true);
@@ -64,7 +68,9 @@ useEffect(() => {
       <CategoryFilter setCategory={setCategory} />
       <NewsList news={news} setActiveNews={setActiveNews} />
       <LoadMoreButton loadMore={() => loadNews(page)} loading={loading} />
-      {activeNews && <NewsModal news={activeNews} close={() => setActiveNews(null)} />}
+      {activeNews && (
+        <NewsModal news={activeNews} close={() => setActiveNews(null)} />
+      )}
     </div>
   );
 }
